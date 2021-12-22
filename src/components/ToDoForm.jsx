@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
-import { ToastProvider, useToasts } from 'react-toast-notifications';
+import { useToasts } from 'react-toast-notifications';
 
 
 function checkCase(ch) {
@@ -8,10 +8,10 @@ function checkCase(ch) {
      return false;
   }
    else {
-     if (ch == ch.toUpperCase()) {
+     if (ch === ch.toUpperCase()) {
         return true;
      }
-     if (ch == ch.toLowerCase()){
+     if (ch === ch.toLowerCase()){
         return false;
      }
   }
@@ -32,7 +32,7 @@ export const ToDoForm = (props) => {
         if(titleString.length>3)
       {
         if(checkCase(descriptionString[0])){
-        onSubmit(values.title, values.description + GetTime());
+        onSubmit(values.title, values.description);
       }
       else {
         addToast('Description should has first capital letter', { appearance: 'error' });
@@ -50,21 +50,14 @@ export const ToDoForm = (props) => {
   return (
     <Form className="todo-form" form={form} layout={'inline'} onFinish={onFinish}>
       <Form.Item name="title" className="todo-form-input">
-        <Input placeholder={'New todo'} />
+        <Input placeholder={'New task'} />
       </Form.Item>
       <Form.Item name="description" className="todo-form-input">
-        <Input placeholder={'description'} />
+        <Input placeholder={'Description'} />
       </Form.Item>
       <Form.Item className="todo-form-actions">
         <Button htmlType="submit" type="primary">Add</Button>
       </Form.Item>
     </Form>
   )
-  function GetTime()
-  {
-    var today = new Date();
-    var result = today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear() +" - " + 
-     today.getHours() + ':' + today.getMinutes() +':' + today.getSeconds();
-     return result;
-  }
 }

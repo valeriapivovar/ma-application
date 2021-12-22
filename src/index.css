@@ -1,6 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   display: flex;
-  height: 100%;
+  @apply h-screen;
 }
 
 .todo {
@@ -10,6 +14,35 @@
 .todo-card {
   min-width: 300px;
   margin: 0 auto;
+}
+
+.control-row {
+  @apply flex justify-between items-center pb-2;
+}
+
+.controls {
+  @apply flex justify-around items-center w-2/12;
+}
+
+.inline-editor {
+  @apply w-9/12;
+}
+
+.Collapsible {
+  @apply w-9/12;
+}
+
+.Collapsible__trigger {
+  @apply font-semibold;
+  line-break: anywhere;
+}
+
+.checkBox {
+  @apply w-1/12;
+}
+
+.created {
+  @apply font-semibold;
 }
 
 .todo-list {
@@ -33,8 +66,8 @@
 }
 
 .todo-form-input {
-  flex: 1!important;
+  flex: 1;
 }
 .todo-form-actions {
-  flex: 0!important;
+  flex: 0;
 }
